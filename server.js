@@ -26,13 +26,13 @@ knex.select('*').from('users').then(data=>console.log(data));
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res)=>{res.send(database.users);})
+app.get('/', (req, res)=>{res.send("it is working");})
 app.post('/signin', signin.handleSignin(knex, bcrypt))
 app.post('/register', (req, res) => {register.handleRegister(req, res, knex, bcrypt, saltRounds)})
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, knex)})
 app.put('/image', (req, res)=> {image.handleImage(req,res, knex)})
 app.post('/imageURL', (req, res)=> {image.handleApiCall(req,res)})
 
-app.listen(3000, ()=>{
-    console.log('app is running on port 3000')
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log(`app is running on port ${process.env.PORT}`);
 })
