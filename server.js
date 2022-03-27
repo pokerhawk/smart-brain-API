@@ -13,8 +13,9 @@ const db = require('knex');
 const knex = db({
     client: 'pg',
     connection: {
-        host : 'process,env,DATABASE_URL',
+        connectionString : process.env.DATABASE_URL,
         sll: true
+        // host: '127.0.1',
         // port : 5432,
         // user : 'postgres',
         // password : 'xiaoxiao10',
