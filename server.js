@@ -13,11 +13,12 @@ const db = require('knex');
 const knex = db({
     client: 'pg',
     connection: {
-        host : 'postgresql-elliptical-86900',
-        port : 5432,
-        user : 'postgres',
-        password : 'xiaoxiao10',
-        database : 'smartbrain'
+        host : 'process,env,DATABASE_URL',
+        sll: true
+        // port : 5432,
+        // user : 'postgres',
+        // password : 'xiaoxiao10',
+        // database : 'smartbrain'
     }
 })
 
