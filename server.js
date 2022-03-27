@@ -30,7 +30,10 @@ app.use(cors());
 
 app.get('/', (req, res)=>{res.send("it is working");})
 app.post('/signin', signin.handleSignin(knex, bcrypt))
-app.post('/register', (req, res) => {register.handleRegister(req, res, knex, bcrypt, saltRounds)})
+app.post('/register', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    register.handleRegister(req, res, knex, bcrypt, saltRounds);
+})
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, knex)})
 app.put('/image', (req, res)=> {image.handleImage(req,res, knex)})
 app.post('/imageURL', (req, res)=> {image.handleApiCall(req,res)})
